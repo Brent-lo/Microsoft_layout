@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+
+        body{
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+        }
+        header {
+            width: 100%;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        
+
+        .slider {
+            width: 100%;
+            height: 470px;
+            /* 隱藏後面的圖 */
+            overflow: hidden;
+            margin-bottom: 10px;
+            
+        }
+
+        .slides {
+            display: flex;
+            width: 200%;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .slide-pic {
+            width: 100%;
+            height: 470px;
+        }
+        .slide-pic picture img{
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /* 滑動效果 */
+        #slide1:checked~.slider .slides {
+            transform: translateX(0%);
+        }
+
+        #slide2:checked~.slider .slides {
+            transform: translateX(-50%);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid black;
+            transition: background-color 0.3s;
+        }
+
+        #slide1:checked~.controls .dot1 {
+            background-color: #333;
+        }
+
+        #slide2:checked~.controls .dot2 {
+            background-color: #333;
+        }
+        .stop-button{
+            cursor: pointer;
+        }
+        .stop-button i+i{
+            display: none;
+        }
+        #slide-stop:checked~.controls .stop-button i.fa-circle-pause{
+            display: none;
+        }
+        #slide-stop:checked~.controls  .stop-button i.fa-circle-play{
+            display: block;
+        }
+        
+        .nav-button {
+            background-color: white;
+            padding: 6px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .nav-button:checked{
+            background-color:black;
+        }
+        .nav-button-1:hover i{
+            transition: 0.5s;
+            transform: translateX(-70%);
+        }
+        .nav-button-2:hover i{
+            transition: 0.5s;
+            transform: translateX(70%);
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+    <header >
+        <!-- radio -->
+        <input type="checkbox" id="slide-stop" hidden>
+        <input type="radio" name="slider" id="slide1" checked hidden>
+        <input type="radio" name="slider" id="slide2" hidden>
+
+
+        <!-- 圖片區 -->
+        <div class="slider">
+            <div class="slides">
+                <div class="slide-pic .left-slide-pic">
+                    <picture>
+                        <source media="(min-widrh:1400px)" srcset="./img/swiper/1-1920x600.avif">
+                        <source media="(min-width:1084px)" srcset="./img/swiper/1-1399x600.avif">
+                        <source media="(min-width:860px)" srcset="./img/swiper/1-1083x600.avif">
+                        <img src="./img/swiper/1-859x540.avif" alt="">
+                    </picture>
+                </div>
+                <div class="slide-pic right-slide-pic">
+                    <picture>
+                        <source media="(min-widrh:1400px)" srcset="./img/swiper/2-1920x600.avif">
+                        <source media="(min-width:1084px)" srcset="./img/swiper/2-1399x600.avif">
+                        <source media="(min-width:860px)" srcset="./img/swiper/3-1083x600.avif">
+                        <img src="./img/swiper/5-859x540.avif" alt="">
+                    </picture>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 控制按鈕 -->
+        <div class="controls">
+            <!-- 暫停 -->
+             <label for="slide-stop" class="stop-button" tabindex="0">
+                <i class="fa-regular fa-circle-pause"></i>
+                <i class="fa-solid fa-circle-play"></i>
+             </label>
+            <!-- ← 左 -->
+            <label for="slide1" class="nav-button nav-button-1" tabindex="0">
+                <i class="fa-solid fa-chevron-left"></i>
+            </label>
+
+            <!-- 指示圓圈 -->
+            <label for="slide1">
+                <div class="dot dot1"></div>
+            </label>
+            <label for="slide2">
+                <div class="dot dot2"></div>
+            </label>
+
+            <!-- 右 → -->
+            <label for="slide2" class="nav-button nav-button-2" tabindex="0"><i class="fa-solid fa-chevron-right"></i></label>
+        </div>
+        <!-- <div class="header-text">
+            <div class="title">認識 Surface Pro</div>
+            <div class="content">這台膝上型電腦擁有無與倫比的彈性和人工智慧功能，例如即時輔助字幕和 Cocreator,助您獲得更多選項。</div>
+            <div class="btn-in-pic">深入了解</div>
+        </div> -->
+    </header>
+</body>
+
+</html>
